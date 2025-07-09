@@ -8,17 +8,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:e2e": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@8.14.3+sha512.c3ed80eb583be3e2b7ef31eb96b8b9cfaa0503e5d44ec717514120b5187b2f933736e9038c51a5a23ad582790ba41d4ab784618c89fa7e2365f6665685d612ee",
   "dependencies": {
-    "@hookform/resolvers": "^5.1.1",
+    "@hookform/resolvers": "^3.9.0",
     "axios": "^1.9.0",
     "lodash": "^4.17.21",
-    "next": "^15.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.59.0",
@@ -27,13 +27,33 @@
     "zod": "^3.25.57"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@playwright/test": "^1.53.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.15",
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.7",
     "@types/react-dom": "^19.1.6",
     "@types/styled-components": "^5.1.34",
+    "babel-jest": "^30.0.4",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.1.6",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "msw": "^2.10.3",
+    "next": "^15.3.4",
+    "playwright-msw": "^3.0.1",
     "typescript": "^5.7.2"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
