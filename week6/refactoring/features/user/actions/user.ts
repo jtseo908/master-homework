@@ -1,7 +1,7 @@
 import { UserProfileUpdateInput } from "../validators/userSchema";
 
 /**
- * 사용자 정보를 업데이트하는 비즈니스 로직 (API 호출을 모방)
+ * 사용자 정보를 업데이트하는 비즈니스 로직
  * @param data - 폼에서 입력받은 사용자 정보
  * @returns - 처리 결과 (성공 여부, 메시지)
  */
@@ -16,16 +16,31 @@ export const updateUserProfile = async (
     delete payload.password;
   }
 
-  // --- 여기에서 실제 API 호출이 이루어집니다 ---
-  // Ex) await api.put('/user/profile', payload);
-
-  // 모의 비동기 처리를 위해 약간의 딜레이를 줍니다.
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
   console.log("서버로 전송될 최종 데이터:", payload);
 
-  return {
-    success: true,
-    message: "사용자 정보가 성공적으로 업데이트되었습니다!",
-  };
+  try {
+    // 실제 API 호출 (Next.js API 라우트 경로)
+    const response = await fetch("/api/user/profile", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("서버 응답:", result);
+
+    return result;
+  } catch (error) {
+    console.error("사용자 정보 업데이트 실패:", error);
+    return {
+      success: false,
+      message: "사용자 정보 업데이트에 실패했습니다.",
+    };
+  }
 };

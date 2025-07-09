@@ -1,0 +1,89 @@
+{
+  "title": "UserProfile_E2E_Test",
+  "timeout": 5000,
+  "steps": [
+    {
+      "type": "navigate",
+      "url": "http://localhost:3000/week6",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "http://localhost:3000/week6",
+          "title": "Frontend Master Homework"
+        }
+      ]
+    },
+    {
+      "type": "waitForElement",
+      "selectors": ["button:has-text('수정하기')"],
+      "timeout": 3000
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": ["button:has-text('수정하기')"],
+      "offsetX": 50,
+      "offsetY": 16
+    },
+    {
+      "type": "waitForElement",
+      "selectors": ["input[name='username']"],
+      "timeout": 2000
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": ["input[name='username']"],
+      "offsetX": 200,
+      "offsetY": 20
+    },
+    {
+      "type": "key",
+      "key": "Control+a"
+    },
+    {
+      "type": "type",
+      "text": "테스트사용자",
+      "delay": 100
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": ["input[name='email']"],
+      "offsetX": 200,
+      "offsetY": 20
+    },
+    {
+      "type": "key",
+      "key": "Control+a"
+    },
+    {
+      "type": "type",
+      "text": "test@example.com",
+      "delay": 100
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": ["button:has-text('저장하기')"],
+      "offsetX": 50,
+      "offsetY": 16
+    },
+    {
+      "type": "waitForElement",
+      "selectors": ["text='사용자 정보가 성공적으로 업데이트되었습니다!'"],
+      "timeout": 5000
+    },
+    {
+      "type": "assertText",
+      "target": "main",
+      "selectors": ["[data-testid='success-message']"],
+      "text": "사용자 정보가 성공적으로 업데이트되었습니다!"
+    },
+    {
+      "type": "waitForElement",
+      "selectors": ["button:has-text('수정하기')"],
+      "timeout": 3000
+    }
+  ]
+}
